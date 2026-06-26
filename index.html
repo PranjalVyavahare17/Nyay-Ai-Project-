@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Law Advisor - Chatbot & Lawyer Directory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-container {
+            height: 700px;
+        }
+
+        .lawyers-container {
+            max-height: 700px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .header-controls {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .header-controls label {
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-controls select {
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .chat-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            animation: slideIn 0.3s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        .message-text {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .user-message .message-text {
+            background: #667eea;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot-message .message-text {
+            background: #e0e0e0;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .input-area {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-radius: 0 0 12px 12px;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #667eea;
+        }
+
+        input[type="text"]::placeholder {
+            color: #999;
+        }
+
+        input[type="text"]:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite;
+            margin-right: 4px;
+        }
+
+        .loading:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading:nth-child(3) {
+            animation-delay: 0.4s;
+            margin-right: 0;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            40% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            margin-top: 10px;
+        }
+
+        /* Tabs Styles */
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            border-bottom: 2px solid #e0e0e0;
+            background: white;
+        }
+
+        .tab-btn {
+            background: #f0f0f0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            color: #666;
+        }
+
+        .tab-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Lawyer Search Styles */
+        .lawyer-search {
+            padding: 20px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+
+        /* Lawyer Card Styles */
+        .lawyer-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .lawyer-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            border-color: #667eea;
+        }
+
+        .lawyer-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .lawyer-info {
+            font-size: 12px;
+            color: #666;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lawyer-rating {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .specialization {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .spec-tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .lawyer-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .lawyer-actions button {
+            flex: 1;
+            padding: 10px;
+            font-size: 12px;
+            margin: 0;
+            border-radius: 6px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-field {
+            margin-bottom: 15px;
+        }
+
+        .modal-field label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .modal-field input,
+        .modal-field textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .modal-field textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-actions button {
+            flex: 1;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
+        .cancel-btn {
+            background: #f0f0f0 !important;
+            color: #666 !important;
+        }
+
+        .emptyState {
+            padding: 40px 20px;
+            text-align: center;
+            color: #999;
+        }
+
+        .emptyState p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Chat Section -->
+        <div class="container chat-container">
+            <div class="header">
+                <h1>⚖️ AI Law Advisor</h1>
+                <p>Indian Penal Code Information</p>
+                <div class="header-controls">
+                    <label>Language:</label>
+                    <select id="languageSelect">
+                        <option value="english">🇬🇧 English</option>
+                        <option value="hindi">🇮🇳 Hindi (हिंदी)</option>
+                        <option value="marathi">🇮🇳 Marathi (मराठी)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="chat-box" id="chatBox">
+                <div class="message bot-message">
+                    <div class="message-text">
+                        👋 Welcome to AI Law Advisor! Ask about Indian Penal Code sections.
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="Ask your legal question..." 
+                    onkeypress="handleKeyPress(event)"
+                />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <!-- Lawyer Directory Section -->
+        <div class="container lawyers-container">
+            <div class="header">
+                <h1>👨‍⚖️ Find a Lawyer</h1>
+                <p>Professional Legal Consultation</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="switchTab('all', this)">📋 All Lawyers</button>
+                <button class="tab-btn" onclick="switchTab('search', this)">🔍 Search</button>
+                <button class="tab-btn" onclick="switchTab('favorites', this)">⭐ Top Rated</button>
+                <button class="tab-btn" onclick="switchTab('requests', this)">📝 Requests</button>
+            </div>
+
+            <!-- All Lawyers Tab -->
+            <div id="all" class="tab-content active">
+                <div id="lawyersContainer" style="overflow-y: auto; flex: 1; padding: 20px;"></div>
+            </div>
+
+            <!-- Search Tab -->
+            <div id="search" class="tab-content">
+                <div class="lawyer-search">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="lawyerSearch" 
+                            placeholder="Search by specialization..."
+                            onkeypress="handleLawyerSearch(event)"
+                        />
+                        <button onclick="searchLawyers()">Search</button>
+                    </div>
+                </div>
+                <div id="searchResults" style="overflow-y: auto; flex: 1; padding: 20px;"></div>
+            </div>
+
+            <!-- Top Rated Tab -->
+            <div id="favorites" class="tab-content">
+                <div id="topRatedContainer" style="overflow-y: auto; flex: 1; padding: 20px;"></div>
+            </div>
+
+            <!-- Requests Tab -->
+            <div id="requests" class="tab-content">
+                <div id="requestsContainer" style="overflow-y: auto; flex: 1; padding: 20px;">
+                    <p style="text-align:center; color:#999;">Loading requests...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>📞 Contact Lawyer</span>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-field">
+                    <label>Lawyer Name:</label>
+                    <input type="text" id="modalLawyerName" readonly style="background: #f5f5f5;">
+                </div>
+                <div class="modal-field">
+                    <label>Specialization:</label>
+                    <input type="text" id="modalSpecialization" readonly style="background: #f5f5f5;">
+                </div>
+                <div class="modal-field">
+                    <label>Your Name:</label>
+                    <input type="text" id="clientName" placeholder="Enter your full name">
+                </div>
+                <div class="modal-field">
+                    <label>Your Email:</label>
+                    <input type="email" id="clientEmail" placeholder="Enter your email">
+                </div>
+                <div class="modal-field">
+                    <label>Your Phone:</label>
+                    <input type="tel" id="clientPhone" placeholder="Enter your phone number">
+                </div>
+                <div class="modal-field">
+                    <label>Message:</label>
+                    <textarea id="clientMessage" placeholder="Describe your case..."></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+                <button onclick="submitContact()">📧 Send Request</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+        const languageSelect = document.getElementById('languageSelect');
+        const lawyersContainer = document.getElementById('lawyersContainer');
+        const searchResults = document.getElementById('searchResults');
+        const topRatedContainer = document.getElementById('topRatedContainer');
+        const contactModal = document.getElementById('contactModal');
+
+        let allLawyers = [];
+
+        // Load lawyers and requests on page load
+        window.addEventListener('load', () => { loadLawyers(); loadRequests(); });
+
+        async function loadLawyers() {
+            try {
+                const response = await fetch('http://localhost:5000/lawyers');
+                const data = await response.json();
+                allLawyers = data.lawyers;
+                displayLawyers(allLawyers, lawyersContainer);
+                loadTopRated();
+            } catch (error) {
+                lawyersContainer.innerHTML = '<div class="emptyState"><p>❌ Error loading lawyers</p></div>';
+                console.error('Error:', error);
+            }
+        }
+
+        function displayLawyers(lawyers, container) {
+            container.innerHTML = '';
+            if (lawyers.length === 0) {
+                container.innerHTML = '<div class="emptyState"><p>❌ No lawyers found</p></div>';
+                return;
+            }
+            
+            lawyers.forEach(lawyer => {
+                const card = createLawyerCard(lawyer);
+                container.appendChild(card);
+            });
+        }
+
+        function createLawyerCard(lawyer) {
+            const card = document.createElement('div');
+            card.className = 'lawyer-card';
+            card.innerHTML = `
+                <div class="lawyer-name">${lawyer.name}</div>
+                <div class="lawyer-info">
+                    ⭐ <span class="lawyer-rating">${lawyer.rating}</span>
+                </div>
+                <div class="lawyer-info">📍 ${lawyer.location}</div>
+                <div class="lawyer-info">💼 ${lawyer.experience}</div>
+                <div class="lawyer-info">💰 ${lawyer.consultation_fee}</div>
+                <div class="specialization">
+                    ${lawyer.specialization.map(spec => `<span class="spec-tag">${spec}</span>`).join('')}
+                </div>
+                <div class="lawyer-info">📞 ${lawyer.phone}</div>
+                <div class="lawyer-info">✉️ ${lawyer.email}</div>
+                <div class="lawyer-actions">
+                    <button onclick="openContactModal('${lawyer.name}', '${lawyer.specialization.join(', ')}', '${lawyer.phone}', '${lawyer.email}')">📧 Contact</button>
+                    <button style="background: #f0f0f0; color: #666;" onclick="copyToClipboard('${lawyer.phone}')">📋 Copy</button>
+                </div>
+            `;
+            return card;
+        }
+
+        function loadTopRated() {
+            const topRated = allLawyers.sort((a, b) => b.rating - a.rating).slice(0, 3);
+            displayLawyers(topRated, topRatedContainer);
+        }
+
+        async function searchLawyers() {
+            const query = document.getElementById('lawyerSearch').value.trim();
+            if (!query) {
+                searchResults.innerHTML = '<div class="emptyState"><p>Enter a specialization to search</p></div>';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5000/lawyers/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ specialization: query })
+                });
+                const data = await response.json();
+                displayLawyers(data.results, searchResults);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function handleLawyerSearch(event) {
+            if (event.key === 'Enter') {
+                searchLawyers();
+            }
+        }
+
+        function switchTab(tabName, btn) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // Show selected tab
+            const el = document.getElementById(tabName);
+            if (el) el.classList.add('active');
+            if (btn) btn.classList.add('active');
+
+            // If requests tab activated, refresh requests
+            if (tabName === 'requests') {
+                loadRequests();
+            }
+        }
+
+        function openContactModal(name, specialization, phone, email) {
+            document.getElementById('modalLawyerName').value = name;
+            document.getElementById('modalSpecialization').value = specialization;
+            contactModal.classList.add('active');
+            document.getElementById('clientName').focus();
+        }
+
+        function closeModal() {
+            contactModal.classList.remove('active');
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('clientMessage').value = '';
+        }
+
+        async function submitContact() {
+            const name = document.getElementById('clientName').value.trim();
+            const email = document.getElementById('clientEmail').value.trim();
+            const phone = document.getElementById('clientPhone').value.trim();
+            const message = document.getElementById('clientMessage').value.trim();
+
+            if (!name || !email || !phone || !message) {
+                alert('Please fill all fields!');
+                return;
+            }
+
+            const lawyerName = document.getElementById('modalLawyerName').value;
+            const specialization = document.getElementById('modalSpecialization').value;
+
+            try {
+                const resp = await fetch('http://localhost:5000/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        lawyer_name: lawyerName,
+                        specialization: specialization,
+                        client_name: name,
+                        client_email: email,
+                        client_phone: phone,
+                        message: message
+                    })
+                });
+                const data = await resp.json();
+                if (!resp.ok) {
+                    throw new Error(data.error || 'Failed to send contact');
+                }
+                alert(`✅ Contact request sent to ${lawyerName}!\nThey will contact you shortly.`);
+                closeModal();
+                // Refresh requests list
+                loadRequests();
+                // switch to requests tab
+                const reqBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.textContent.includes('Requests') || b.textContent.includes('Requests'));
+                if (reqBtn) reqBtn.click();
+            } catch (err) {
+                console.error('Contact error', err);
+                alert('Failed to send contact request. Please try again.');
+            }
+        }
+
+        // Requests handling
+        async function loadRequests() {
+            try {
+                const resp = await fetch('http://localhost:5000/contacts');
+                const data = await resp.json();
+                displayRequests(data.contacts || []);
+            } catch (err) {
+                const container = document.getElementById('requestsContainer');
+                container.innerHTML = '<div class="emptyState"><p style="color:red">Error loading requests</p></div>';
+                console.error('Failed to load requests', err);
+            }
+        }
+
+        function displayRequests(requests) {
+            const container = document.getElementById('requestsContainer');
+            container.innerHTML = '';
+            if (!requests || requests.length === 0) {
+                container.innerHTML = '<div class="emptyState"><p>No requests submitted yet</p></div>';
+                return;
+            }
+            requests.slice().reverse().forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'lawyer-card';
+                card.innerHTML = `
+                    <div class="lawyer-name">${escapeHtml(r.lawyer_name)} <span style="font-size:12px; color:#666; font-weight:normal">(${new Date(r.timestamp).toLocaleString()})</span></div>
+                    <div class="lawyer-info">👤 Client: ${escapeHtml(r.client_name)}</div>
+                    <div class="lawyer-info">✉️ ${escapeHtml(r.client_email)} | 📞 ${escapeHtml(r.client_phone)}</div>
+                    <div class="lawyer-info">🏷️ Specialization: ${escapeHtml(r.specialization)}</div>
+                    <div style="margin-top:10px; white-space:pre-wrap;">${escapeHtml(r.message)}</div>
+                    <div class="lawyer-actions">
+                        <button style="background:#667eea; color:white;" onclick="copyToClipboard('${r.client_phone}')">📋 Copy Client Phone</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function copyToClipboard(phone) {
+            navigator.clipboard.writeText(phone);
+            alert(`📋 Copied: ${phone}`);
+        }
+
+        // Chat functions
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            const language = languageSelect.value;
+            
+            if (message === '') return;
+
+            displayMessage(message, 'user');
+            userInput.value = '';
+            showTypingIndicator();
+
+            try {
+                const response = await fetch('http://localhost:5000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: message, language: language })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                removeTypingIndicator();
+                displayMessage(data.answer, 'bot');
+            } catch (error) {
+                removeTypingIndicator();
+                displayMessage('Error connecting to server.', 'bot');
+                console.error('Error:', error);
+            }
+        }
+
+        function displayMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = `<div class="message-text">${escapeHtml(text)}</div>`;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            messageDiv.id = 'typing-indicator';
+            messageDiv.innerHTML = `
+                <div class="message-text">
+                    <div class="typing-indicator">
+                        <div class="loading"></div>
+                        <div class="loading"></div>
+                        <div class="loading"></div>
+                    </div>
+                </div>
+            `;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        languageSelect.addEventListener('change', function() {
+            const welcomeMsg = this.value === 'hindi'
+                ? '👋 स्वागत है! आप हिंदी में कानूनी प्रश्न पूछ सकते हैं।'
+                : this.value === 'marathi'
+                ? '👋 स्वागत आहे! तुम मराठीत कानूनी प्रश्न विचारू शकता.'
+                : '👋 Welcome! Ask about Indian Penal Code sections.';
+            
+            chatBox.innerHTML = `<div class="message bot-message"><div class="message-text">${welcomeMsg}</div></div>`;
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == contactModal) {
+                closeModal();
+            }
+        }
+
+        userInput.focus();
+    </script>
+</body>
+</html>

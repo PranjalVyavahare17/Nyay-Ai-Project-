@@ -1,0 +1,76 @@
+{
+  "lawyers": [
+    {
+      "id": 1,
+      "name": "Adv. Rajesh Kumar",
+      "phone": "+91-9876543210",
+      "email": "rajesh.kumar@lawfirm.com",
+      "specialization": ["Criminal Law", "IPC Cases", "Murder Cases"],
+      "experience": "15 years",
+      "location": "Mumbai, Maharashtra",
+      "languages": ["English", "Hindi", "Marathi"],
+      "rating": 4.8,
+      "consultation_fee": "Rs 1000/hour"
+    },
+    {
+      "id": 2,
+      "name": "Adv. Priya Sharma",
+      "phone": "+91-9876543211",
+      "email": "priya.sharma@lawfirm.com",
+      "specialization": ["Women Rights", "Dowry Cases", "Sexual Harassment", "Domestic Violence"],
+      "experience": "12 years",
+      "location": "Delhi, India",
+      "languages": ["English", "Hindi"],
+      "rating": 4.9,
+      "consultation_fee": "Rs 1200/hour"
+    },
+    {
+      "id": 3,
+      "name": "Adv. Vikram Singh",
+      "phone": "+91-9876543212",
+      "email": "vikram.singh@lawfirm.com",
+      "specialization": ["Theft Cases", "Robbery", "Criminal Breach of Trust", "Fraud"],
+      "experience": "10 years",
+      "location": "Bangalore, Karnataka",
+      "languages": ["English", "Hindi", "Kannada"],
+      "rating": 4.7,
+      "consultation_fee": "Rs 800/hour"
+    },
+    {
+      "id": 4,
+      "name": "Adv. Anjali Patel",
+      "phone": "+91-9876543213",
+      "email": "anjali.patel@lawfirm.com",
+      "specialization": ["Assault Cases", "Personal Injury", "Criminal Intimidation"],
+      "experience": "8 years",
+      "location": "Pune, Maharashtra",
+      "languages": ["English", "Hindi", "Marathi"],
+      "rating": 4.6,
+      "consultation_fee": "Rs 700/hour"
+    },
+    {
+      "id": 5,
+      "name": "Adv. Rohan Gupta",
+      "phone": "+91-9876543214",
+      "email": "rohan.gupta@lawfirm.com",
+      "specialization": ["Cybercrime", "Online Fraud", "Digital Evidence"],
+      "experience": "7 years",
+      "location": "Hyderabad, Telangana",
+      "languages": ["English", "Hindi", "Telugu"],
+      "rating": 4.8,
+      "consultation_fee": "Rs 1500/hour"
+    },
+    {
+      "id": 6,
+      "name": "Adv. Meera Desai",
+      "phone": "+91-9876543215",
+      "email": "meera.desai@lawfirm.com",
+      "specialization": ["Property Disputes", "Theft", "Civil Cases", "Criminal Cases"],
+      "experience": "14 years",
+      "location": "Ahmedabad, Gujarat",
+      "languages": ["English", "Hindi", "Gujarati"],
+      "rating": 4.7,
+      "consultation_fee": "Rs 900/hour"
+    }
+  ]
+}

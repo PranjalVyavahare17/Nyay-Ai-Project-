@@ -1,0 +1,37 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "lawyer_name": "Adv. Rajesh Kumar",
+      "specialization": "Criminal Law, IPC Cases, Murder Cases",
+      "client_name": "Pranjal Vyavhare",
+      "client_email": "vyavaharepranjal@gmail.com",
+      "client_phone": "9673096359",
+      "message": "anhvcjlsncksmv",
+      "timestamp": "2025-11-30T08:09:44.056158Z",
+      "status": "sent"
+    },
+    {
+      "id": 2,
+      "lawyer_name": "Adv. Priya Sharma",
+      "specialization": "Women Rights, Dowry Cases, Sexual Harassment, Domestic Violence",
+      "client_name": "Pranjal Vyavhare",
+      "client_email": "vyavhaarepranjal@gmail.com",
+      "client_phone": "9673096359",
+      "message": "sjhckjshvoslkvos",
+      "timestamp": "2025-12-05T05:05:03.682639Z",
+      "status": "sent"
+    },
+    {
+      "id": 3,
+      "lawyer_name": "Adv. Vikram Singh",
+      "specialization": "Theft Cases, Robbery, Criminal Breach of Trust, Fraud",
+      "client_name": "pranjal  vyavhare",
+      "client_email": "hagcchskcjs;lvd@gmail.com",
+      "client_phone": "5237289459",
+      "message": "hagsvfjushgoskigoeggo",
+      "timestamp": "2025-12-18T07:02:31.564875Z",
+      "status": "sent"
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "sections": [
+    {
+      "section": "Section 294",
+      "title": {
+        "english": "Obscene Acts and Songs",
+        "hindi": "अश्लील कार्य और गाने",
+        "marathi": "अश्लील कृत्ये आणि गाणे"
+      },
+      "text": {
+        "english": "Whoever does any obscene act in any public place or sings obscene songs shall be punished.",
+        "hindi": "जो कोई भी किसी सार्वजनिक स्थान पर कोई अश्लील कार्य करता है या अश्लील गाने गाता है, उसे दंडित किया जाएगा।",
+        "marathi": "जो कोई सार्वजनिक ठिकाणी अश्लील कृत्य करतो किंवा अश्लील गाणे गातो, त्याला दंड दिला जाईल।"
+      },
+      "meaning": {
+        "english": "Using abusive, vulgar, or obscene words in public is a crime.",
+        "hindi": "सार्वजनिक स्थान पर गालियां, अश्लील या कठोर शब्दों का उपयोग करना अपराध है।",
+        "marathi": "सार्वजनिक ठिकाणी गाळी, अश्लील किंवा कठोर शब्द वापरणे हे गुन्हा आहे।"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 3 months or fine up to Rs 250 or both",
+        "hindi": "3 महीने तक की कैद या 250 रुपये तक का जुर्माना या दोनों",
+        "marathi": "3 महिन्यांपर्यंत कारावास किंवा 250 रुपये पर्यंत दंड किंवा दोन्ही"
+      },
+      "keywords": ["abuse", "bad words", "insult", "public abuse", "obscene"]
+    },
+    {
+      "section": "Section 323",
+      "title": {
+        "english": "Voluntarily Causing Hurt",
+        "hindi": "स्वेच्छा से चोट पहुंचाना",
+        "marathi": "स्वेच्छेने दुखापत घडवणे"
+      },
+      "text": {
+        "english": "Whoever voluntarily causes hurt shall be punished with imprisonment up to one year or fine or both.",
+        "hindi": "जो कोई जानबूझकर किसी को चोट पहुंचाता है, उसे एक साल तक की कैद या जुर्माना या दोनों से दंडित किया जाएगा。",
+        "marathi": "जो कोई स्वेच्छेने एखाद्याला दुखापत घडवितो, त्याला एक वर्षाची कारावास किंवा दंड किंवा दोन्ही दिला जाईल。"
+      },
+      "meaning": {
+        "english": "If someone intentionally harms your body, it is an offence.",
+        "hindi": "यदि कोई जानबूझकर आपके शरीर को नुकसान पहुंचाता है, तो यह अपराध है。",
+        "marathi": "जर कोई मुद्दाम तुमच्या शरीराला नुकसान पहुंचवितो, तर हे गुन्हा आहे。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 1 year or fine up to Rs 250 or both",
+        "hindi": "1 साल तक की कैद या 250 रुपये तक का जुर्माना या दोनों",
+        "marathi": "1 वर्षापर्यंत कारावास किंवा 250 रुपये पर्यंत दंड किंवा दोन्ही"
+      },
+      "keywords": ["slap", "hit", "beat", "hurt", "attack", "fight", "injury"]
+    },
+    {
+      "section": "Section 379",
+      "title": {
+        "english": "Theft",
+        "hindi": "चोरी",
+        "marathi": "चोरी"
+      },
+      "text": {
+        "english": "Whoever commits theft shall be punished.",
+        "hindi": "जो कोई चोरी करता है, उसे दंडित किया जाएगा。",
+        "marathi": "जो कोई चोरी करतो, त्याला दंड दिला जाईल。"
+      },
+      "meaning": {
+        "english": "Taking someone else's property without permission.",
+        "hindi": "किसी और की संपत्ति को अनुमति के बिना लेना。",
+        "marathi": "दुसऱ्याची मालमत्ता परवानगीशिवाय घेणे。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 3 years or fine or both",
+        "hindi": "3 साल तक की कैद या जुर्माना या दोनों",
+        "marathi": "3 वर्षापर्यंत कारावास किंवा दंड किंवा दोन्ही"
+      },
+      "keywords": ["theft", "mobile stolen", "steal", "pickpocket"]
+    },
+    {
+      "section": "Section 392",
+      "title": {
+        "english": "Robbery",
+        "hindi": "डकैती",
+        "marathi": "दरोडा"
+      },
+      "text": {
+        "english": "Robbery is punishable with 10 years imprisonment.",
+        "hindi": "डकैती को 10 साल की कैद से दंडित किया जा सकता है。",
+        "marathi": "दरोड्याला 10 वर्षाची कारावास दिली जाऊ शकते。"
+      },
+      "meaning": {
+        "english": "Stealing with violence or threat.",
+        "hindi": "हिंसा या धमकी से चोरी करना。",
+        "marathi": "हिंसा किंवा धमकीने चोरी करणे。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 10 years or fine",
+        "hindi": "10 साल तक की कैद या जुर्माना",
+        "marathi": "10 वर्षाची कैद किंवा दंड"
+      },
+      "keywords": ["robbery", "snatch", "chain snatching"]
+    },
+    {
+      "section": "Section 420",
+      "title": {
+        "english": "Cheating and Fraud",
+        "hindi": "धोखाधड़ी",
+        "marathi": "फसवणूक"
+      },
+      "text": {
+        "english": "Cheating and dishonestly inducing delivery of property.",
+        "hindi": "धोखाधड़ी करके संपत्ति को हस्तांतरित करवाना。",
+        "marathi": "फसवणूक करून मालमत्ता हस्तांतरण करणे。"
+      },
+      "meaning": {
+        "english": "Fraud, scam, financial cheating.",
+        "hindi": "धोखाधड़ी, घोटाला, वित्तीय धोखाधड़ी。",
+        "marathi": "फसवणूक, घोटाळा, आर्थिक फसवणूक。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 7 years or fine or both",
+        "hindi": "7 साल तक की कैद या जुर्माना या दोनों",
+        "marathi": "7 वर्षापर्यंत कारावास किंवा दंड किंवा दोन्ही"
+      },
+      "keywords": ["cheat", "fraud", "scam", "online scam"]
+    },
+    {
+      "section": "Section 354A",
+      "title": {
+        "english": "Sexual Harassment",
+        "hindi": "यौन उत्पीड़न",
+        "marathi": "लैंगिक छळ"
+      },
+      "text": {
+        "english": "Demanding sexual favours, showing porn, or physical contact without consent.",
+        "hindi": "यौन सुविधाओं की मांग करना, अश्लील सामग्री दिखाना, या बिना सहमति के शारीरिक संपर्क。",
+        "marathi": "यौन सुविधांची मागणी करणे, अश्लील सामग्री दाखवणे, किंवा सहमतीशिवाय शारीरिक संपर्क。"
+      },
+      "meaning": {
+        "english": "Any unwanted sexual behaviour is a crime.",
+        "hindi": "कोई भी अवांछित यौन व्यवहार अपराध है。",
+        "marathi": "कोणतेही अनिच्छुक लैंगिक वर्तन गुन्हा आहे。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 3 years or fine",
+        "hindi": "3 साल तक की कैद या जुर्माना",
+        "marathi": "3 वर्षांची कैद किंवा दंड"
+      },
+      "keywords": ["sexual harassment", "office harassment"]
+    },
+    {
+      "section": "Section 498A",
+      "title": {
+        "english": "Cruelty by Husband or Relatives",
+        "hindi": "पति या रिश्तेदारों द्वारा क्रूरता",
+        "marathi": "पती किंवा नातेवाईकांकडून क्रूरता"
+      },
+      "text": {
+        "english": "Husband or his relatives causing cruelty to a woman.",
+        "hindi": "पति या रिश्तेदार महिला को क्रूरता के अधीन करते हैं。",
+        "marathi": "पती किंवा नातेवाईक महिलेला क्रूरता सहन करवितात。"
+      },
+      "meaning": {
+        "english": "Harassment for dowry or torture in marriage.",
+        "hindi": "दहेज के लिए उत्पीड़न या विवाह में यातना。",
+        "marathi": "दहेजच्या मागणीसाठी छळ किंवा विवाहात यातना。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 3 years or fine",
+        "hindi": "3 साल तक की कैद या जुर्माना",
+        "marathi": "3 वर्षांची कैद किंवा दंड"
+      },
+      "keywords": ["dowry", "domestic violence", "harassment"]
+    },
+    {
+      "section": "Section 503",
+      "title": {
+        "english": "Criminal Intimidation",
+        "hindi": "आपराधिक धमकी",
+        "marathi": "गुन्हेगारी धमकी"
+      },
+      "text": {
+        "english": "Threatening someone with injury.",
+        "hindi": "किसी को हानि पहुँचाने की धमकी देना。",
+        "marathi": "एखाद्याला दुखापत करण्याची धमकी देणे。"
+      },
+      "meaning": {
+        "english": "Threatening to kill, beat or harm.",
+        "hindi": "मारने, पीटने या नुकसान पहुंचाने की धमकी।",
+        "marathi": "मारणे, मारहाण किंवा इजा करण्याची धमकी。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 2 years or fine",
+        "hindi": "2 साल तक की कैद या जुर्माना",
+        "marathi": "2 वर्षांची कैद किंवा दंड"
+      },
+      "keywords": ["threat", "intimidate", "kill threat"]
+    },
+    {
+  "section": "Section 354B",
+  "title": {
+    "english": "Assault to Disrobe a Woman",
+    "hindi": "महिला के कपड़े उतारने हेतु हमला",
+    "marathi": "महिलेला कपडे काढण्यास भाग पाडणे"
+  },
+  "text": {
+    "english": "Assaulting a woman with intention of disrobing her.",
+    "hindi": "महिला पर हमला कर कपड़े उतारने की कोशिश करना।",
+    "marathi": "महिलेला कपडे काढण्याचा प्रयत्न करणे।"
+  },
+  "punishment": {
+    "english": "Imprisonment up to 7 years and fine",
+    "hindi": "7 साल तक की कैद और जुर्माना",
+    "marathi": "7 वर्षांची कैद आणि दंड"
+  },
+  "keywords": ["disrobe", "forcefully remove clothes"]
+},
+
+    {
+      "section": "Section 354C",
+      "title": {
+        "english": "Voyeurism",
+        "hindi": "झाँकना / गुप्त रूप से देखना",
+        "marathi": "चोरून पाहणे"
+      },
+      "text": {
+        "english": "Watching or capturing images of a woman without consent.",
+        "hindi": "बिना सहमति महिला की फोटो/वीडियो लेना या साझा करना。",
+        "marathi": "सहमतीशिवाय महिलांचे फोटो/व्हिडिओ घेणे किंवा पसरवणे。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 7 years and fine",
+        "hindi": "7 साल तक की कैद और जुर्माना",
+        "marathi": "7 वर्षांची कैद आणि दंड"
+      },
+      "keywords": ["camera", "private recording"]
+    },
+    {
+      "section": "Section 354D",
+      "title": {
+        "english": "Stalking",
+        "hindi": "पीछा करना",
+        "marathi": "पिच्छा करणे"
+      },
+      "text": {
+        "english": "Following or contacting a woman repeatedly against her will.",
+        "hindi": "महिला के मना करने पर भी बार-बार पीछा करना या परेशान करना。",
+        "marathi": "महिलेला नकार दिल्यानंतरही पिच्छा करणे。"
+      },
+      "punishment": {
+        "english": "Imprisonment up to 5 years and fine",
+        "hindi": "5 साल तक की कैद और जुर्माना",
+        "marathi": "5 वर्षांची कैद आणि दंड"
+      },
+      "keywords": ["follow", "harass", "stalker"]
+    },
+    {
+      "section": "Section 376",
+      "title": {
+        "english": "Rape",
+        "hindi": "बलात्कार",
+        "marathi": "बलात्कार"
+      },
+      "text": {
+        "english": "Sexual intercourse without consent.",
+        "hindi": "बिना सहमति यौन संबंध बनाना。",
+        "marathi": "सहमतीशिवाय लैंगिक संबंध ठेवणे。"
+      },
+      "punishment": {
+        "english": "7 years to life imprisonment",
+        "hindi": "7 साल से आजीवन कारावास",
+        "marathi": "7 वर्ष ते आजीवन कारावास"
+      },
+      "keywords": ["rape", "sexual assault", "force"]
+    },
+    {
+      "section": "Section 304B",
+      "title": {
+        "english": "Dowry Death",
+        "hindi": "दहेज मृत्यु",
+        "marathi": "हुंडा मृत्यू"
+      },
+      "text": {
+        "english": "Death due to dowry harassment within 7 years of marriage.",
+        "hindi": "विवाह के 7 साल के अंदर दहेज उत्पीड़न से महिला की मृत्यु。",
+        "marathi": "लग्नाच्या 7 वर्षात हुंडा छळामुळे मृत्यू。"
+      },
+      "punishment": {
+        "english": "Minimum 7 years to life imprisonment",
+        "hindi": "7 साल से आजीवन कारावास",
+        "marathi": "7 वर्ष ते आजीवन कारावास"
+      },
+      "keywords": ["dowry death", "marriage violence"]
+    },
+    {
+      "section": "Section 326A",
+      "title": {
+        "english": "Acid Attack",
+        "hindi": "एसिड हमला",
+        "marathi": "ॲसिड हल्ला"
+      },
+      "text": {
+        "english": "Throwing acid to cause injury or disfigurement.",
+        "hindi": "एसिड डालकर चोट/बदसूरती करना。",
+        "marathi": "ॲसिड फेकून इजा किंवा बदसूरती करणे。"
+      },
+      "punishment": {
+        "english": "10 years to life imprisonment",
+        "hindi": "10 साल से आजीवन कारावास",
+        "marathi": "10 वर्ष ते आजीवन कारावास"
+      },
+      "keywords": ["acid", "attack", "burn injury"]
+    }
+  ],
+  "languages": ["english", "hindi", "marathi"]
+}
